@@ -1,7 +1,7 @@
-package com.grupo1.bancodigital.entity.conta;
+package com.grupo1.bancodigital.model.conta;
 
-import com.grupo1.bancodigital.entity.cliente.ClienteEntity;
-import com.grupo1.bancodigital.entity.transferencia.TransferenciaEntity;
+import com.grupo1.bancodigital.model.cliente.ClienteEntity;
+import com.grupo1.bancodigital.model.transferencia.TransferenciaEntity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;

@@ -1,4 +1,4 @@
-package com.grupo1.bancodigital.entity.cartao;
+package com.grupo1.bancodigital.model.cartao;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

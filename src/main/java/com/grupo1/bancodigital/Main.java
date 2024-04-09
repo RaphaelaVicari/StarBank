@@ -1,6 +1,6 @@
 package com.grupo1.bancodigital;
 
-import com.grupo1.bancodigital.entity.cliente.CategoriaEntity;
+import com.grupo1.bancodigital.model.cliente.CategoriaEntity;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 

@@ -1,4 +1,4 @@
-package com.grupo1.bancodigital.entity.transferencia;
+package com.grupo1.bancodigital.model.transferencia;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

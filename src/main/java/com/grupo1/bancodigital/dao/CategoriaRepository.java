@@ -1,6 +1,6 @@
-package com.grupo1.bancodigital.repository;
+package com.grupo1.bancodigital.dao;
 
-import com.grupo1.bancodigital.entity.cliente.CategoriaEntity;
+import com.grupo1.bancodigital.model.cliente.CategoriaEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;

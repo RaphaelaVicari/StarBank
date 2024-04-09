@@ -1,9 +1,8 @@
-package com.grupo1.bancodigital.entity.cartao;
+package com.grupo1.bancodigital.model.cartao;
 
-import com.grupo1.bancodigital.entity.conta.ContaEntity;
+import com.grupo1.bancodigital.model.conta.ContaEntity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 

@@ -1,6 +1,6 @@
-package com.grupo1.bancodigital.entity.seguro;
+package com.grupo1.bancodigital.model.seguro;
 
-import com.grupo1.bancodigital.entity.cartao.CartaoEntity;
+import com.grupo1.bancodigital.model.cartao.CartaoEntity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;

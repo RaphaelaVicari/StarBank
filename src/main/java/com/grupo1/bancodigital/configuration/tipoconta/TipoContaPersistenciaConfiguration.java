@@ -1,7 +1,7 @@
 package com.grupo1.bancodigital.configuration.tipoconta;
 
-import com.grupo1.bancodigital.entity.conta.TipoContaEntity;
-import com.grupo1.bancodigital.repository.TipoContaRepository;
+import com.grupo1.bancodigital.model.conta.TipoContaEntity;
+import com.grupo1.bancodigital.dao.TipoContaRepository;
 import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

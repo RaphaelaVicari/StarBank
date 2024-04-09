@@ -1,8 +1,8 @@
-package com.grupo1.bancodigital.service;
+package com.grupo1.bancodigital.usecase;
 
 import com.grupo1.bancodigital.dto.CategoriaEnum;
-import com.grupo1.bancodigital.entity.cliente.CategoriaEntity;
-import com.grupo1.bancodigital.repository.CategoriaRepository;
+import com.grupo1.bancodigital.model.cliente.CategoriaEntity;
+import com.grupo1.bancodigital.dao.CategoriaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

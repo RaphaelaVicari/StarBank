@@ -1,9 +1,9 @@
-package com.grupo1.bancodigital.resource;
+package com.grupo1.bancodigital.controller;
 
 
 import com.grupo1.bancodigital.dto.EnderecoRequest;
 import com.grupo1.bancodigital.dto.EnderecoResponse;
-import com.grupo1.bancodigital.service.EnderecoService;
+import com.grupo1.bancodigital.usecase.EnderecoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-public class EnderecoResource {
+public class EnderecoController {
 
     @Autowired
     private EnderecoService enderecoService;

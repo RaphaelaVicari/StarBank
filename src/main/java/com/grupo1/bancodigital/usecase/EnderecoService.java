@@ -1,10 +1,10 @@
-package com.grupo1.bancodigital.service;
+package com.grupo1.bancodigital.usecase;
 
 import com.grupo1.bancodigital.dto.*;
-import com.grupo1.bancodigital.entity.cliente.ClienteEntity;
-import com.grupo1.bancodigital.entity.cliente.EnderecoEntity;
-import com.grupo1.bancodigital.repository.ClienteRepository;
-import com.grupo1.bancodigital.repository.EnderecoRepository;
+import com.grupo1.bancodigital.model.cliente.ClienteEntity;
+import com.grupo1.bancodigital.model.cliente.EnderecoEntity;
+import com.grupo1.bancodigital.dao.ClienteRepository;
+import com.grupo1.bancodigital.dao.EnderecoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;

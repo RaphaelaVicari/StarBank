@@ -1,4 +1,4 @@
-package com.grupo1.bancodigital.entity.conta;
+package com.grupo1.bancodigital.model.conta;
 
 
 import jakarta.persistence.*;

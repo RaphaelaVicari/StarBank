@@ -21,7 +21,7 @@ public class ContaController {
                                                    @PathVariable("cpf") String cpf) {
 
         if (key.equals(TipoContaEnum.CORRENTE)) {
-            ContaResponse response = contaService.cadastrarContaCorrent(cpf, conta);
+            ContaResponse response = contaService.cadastrarContaCorrente(cpf,key,conta);
             return ResponseEntity.status(HttpStatus.CREATED).body(response);
         } else if (key.equals(TipoContaEnum.POUPANCA)) {
             ContaResponse response = contaService.cadastrarContaPoupanca(cpf, key,conta);

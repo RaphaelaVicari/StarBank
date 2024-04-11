@@ -24,7 +24,7 @@ public class ContaController {
             ContaResponse response = contaService.cadastrarContaCorrent(cpf, conta);
             return ResponseEntity.status(HttpStatus.CREATED).body(response);
         } else if (key.equals(TipoContaEnum.POUPANCA)) {
-            ContaResponse response = contaService.cadastrarContaPoupanca(cpf, conta);
+            ContaResponse response = contaService.cadastrarContaPoupanca(cpf, key,conta);
             return ResponseEntity.status(HttpStatus.CREATED).body(response);
         } else {
             // Parâmetro 'key' inválido

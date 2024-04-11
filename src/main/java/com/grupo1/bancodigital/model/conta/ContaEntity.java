@@ -4,6 +4,7 @@ import com.grupo1.bancodigital.model.cliente.ClienteEntity;
 import com.grupo1.bancodigital.model.transferencia.TransferenciaEntity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -15,6 +16,7 @@ import java.util.List;
 @NoArgsConstructor
 @Entity
 @Table(name = "conta")
+@Builder(toBuilder = true)
 public class ContaEntity implements Serializable {
 
     @Id
@@ -26,7 +28,7 @@ public class ContaEntity implements Serializable {
     private String numeroConta;
 
     @Column(name = "numero_agencia", nullable = false)
-    private Long numeroAgencia;
+    private String numeroAgencia;
 
     @Column(name = "digito_conta", nullable = false)
     private Long digitoConta;

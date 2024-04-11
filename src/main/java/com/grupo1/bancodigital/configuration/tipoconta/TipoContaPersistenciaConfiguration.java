@@ -18,7 +18,7 @@ public class TipoContaPersistenciaConfiguration {
                 .nomeTipoConta("CORRENTE")
                 .build();
         TipoContaEntity contaPoupanca = TipoContaEntity.builder()
-                .nomeTipoConta("POUPANÇA")
+                .nomeTipoConta("POUPANCA")
                 .build();
 
         tipoContaRepository.save(contaCorrente);

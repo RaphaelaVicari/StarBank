@@ -3,6 +3,7 @@ package com.grupo1.bancodigital.model.cartao;
 import com.grupo1.bancodigital.model.conta.ContaEntity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -13,6 +14,7 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @Entity
 @Table(name = "cartao")
+@Builder(toBuilder = true)
 public class CartaoEntity {
 
     @Id
@@ -29,17 +31,19 @@ public class CartaoEntity {
     private TipoCartaoEntity tipoCartao;
 
     @Column(name = "numero_cartao",nullable = false)
-    private Long numeroCartao;
+    private String numeroCartao;
 
     @Column(name = "senha",nullable = false)
-    private Long senha;
+    private String senha;
 
     @Column(name = "cvv_cartao",nullable = false)
-    private Long cvv;
+    private String cvv;
 
     @Column(name = "valor_limite")
     private Double limite;
 
     @Column(name = "data_vencimento")
     private LocalDate dataVencimento;
+
+
 }

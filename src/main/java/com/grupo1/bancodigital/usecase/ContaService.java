@@ -90,7 +90,7 @@ public class ContaService {
                 .numeroConta(randomCardNumberGenerator(5))
                 .digitoConta(Long.valueOf(randomCardNumberGenerator(1)))
                 .numeroAgencia(randomCardNumberGenerator(4))
-                .senha(randomCardNumberGenerator(4))
+                .senha(randomCardNumberGenerator(6))
                 .tipoConta(tipoContaEntity)
                 .build();
 

@@ -13,8 +13,11 @@ import java.time.LocalDate;
 @Builder(toBuilder = true)
 public class CartaoResponse {
 
+    private Long idCartao;
     private Long numeroCartao;
     private Long cvv;
     private Double limite;
     private LocalDate dataVencimento;
+    private TipoCartaoEnum tipoCartao;
+    private String senha;
 }

@@ -8,6 +8,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 public class ContaController {
     @Autowired
@@ -34,6 +36,11 @@ public class ContaController {
 
     }
 
+  //todo endpoint de detalhe
+    @GetMapping("/api/cliente/{cpf}/conta")
 
+    public List<ContaResponse> getContas(@PathVariable("cpf") String cpf) {
+        return contaService.listarConta(cpf);
+    }
 }
 

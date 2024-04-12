@@ -60,8 +60,8 @@ public class ContaService {
         ContaEntity contaSalvada = contaRepository.save(contaEntity);
 
         ContaCorrenteEntity contaCorrente = ContaCorrenteEntity.builder()
-                .saldo(conta.getSaldo())
-                .taxaManuntencao(tipoContaTaxaController(tipoConta, clienteEntity.getCategoria()))//todo fazer swith case com a categoria do cliente para retornar a taxa de redimento
+                .saldo(0d)
+                .taxaManuntencao(tipoContaTaxaController(tipoConta, clienteEntity.getCategoria()))
                 .conta(contaSalvada)
                 .build();
 
@@ -69,8 +69,8 @@ public class ContaService {
 
         return mapearConta(contaSalvada,
                 contaCorrenteSalvo.getSaldo(),
-                contaCorrenteSalvo.getTaxaManuntencao(),
-                null);
+                null,
+                contaCorrenteSalvo.getTaxaManuntencao());
     }
 
 
@@ -87,18 +87,18 @@ public class ContaService {
 
 
         ContaEntity contaEntity = ContaEntity.builder()
-                .numeroConta(conta.getNumeroConta())
-                .numeroAgencia(conta.getNumeroAgencia())
-                .digitoConta(conta.getDigitoConta().longValue())
-                .senha(conta.getSenha())
+                .numeroConta(randomCardNumberGenerator(5))
+                .digitoConta(Long.valueOf(randomCardNumberGenerator(1)))
+                .numeroAgencia(randomCardNumberGenerator(4))
+                .senha(randomCardNumberGenerator(4))
                 .tipoConta(tipoContaEntity)
                 .build();
 
         ContaEntity contaSalvada = contaRepository.save(contaEntity);
 
         ContaPoupancaEntity contapoupanca = ContaPoupancaEntity.builder()
-                .saldo(conta.getSaldo())
-                .taxaRendimento(10d)//todo fazer swith case com a categoria do cliente para retornar a taxa de redimento
+                .saldo(0d)
+                .taxaRendimento(tipoContaTaxaController(tipoConta, clienteEntity.getCategoria()))
                 .conta(contaSalvada)
                 .build();
 
@@ -121,7 +121,7 @@ public class ContaService {
                 break;
         }
 
-        return  contaTaxa;
+        return contaTaxa;
     }
 
     private Double taxaPoupancaController(CategoriaEntity categoria) {
@@ -203,17 +203,30 @@ public class ContaService {
 
     public List<ContaResponse> listarConta(String cpfCliente) {
         List<ContaPoupancaEntity> contaPoupancaEncontrada = contaPoupancaRepository.procurarPorCpf(cpfCliente);
+        List<ContaCorrenteEntity> contaCorrenteEncontrada = contaCorrenteRepository.procurarPorCpf(cpfCliente);
 
-        List<ContaResponse> contaPoupancaResponse = new ArrayList<>();
+        //todo implementar procurar por cpf contas correntes na conta corrente repository, que retorna uma lista de conta corrente entity
+        List<ContaResponse> contaResponse = new ArrayList<>();
+
 
         for (ContaPoupancaEntity i : contaPoupancaEncontrada) {
-            contaPoupancaResponse.add(mapearConta(i.getConta(),
+            contaResponse.add(mapearConta(i.getConta(),
                     i.getSaldo(),
                     i.getTaxaRendimento(),
                     null));
         }
 
-        return contaPoupancaResponse;
+
+        for (ContaCorrenteEntity i : contaCorrenteEncontrada) {
+            contaResponse.add(mapearConta(i.getConta(),
+                    i.getSaldo(),
+                    null,
+                    i.getTaxaManuntencao()));
+        }
+
+
+        //todo fazer um for percorrendo a lista de contas correntes encontradas no banco de dados
+        return contaResponse;
     }
 
     private static String randomCardNumberGenerator(int howManyNumbers) {

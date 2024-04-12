@@ -23,10 +23,10 @@ public class ContaController {
                                                    @PathVariable("cpf") String cpf) {
 
         if (key.equals(TipoContaEnum.CORRENTE)) {
-            ContaResponse response = contaService.cadastrarContaCorrente(cpf,key,conta);
+            ContaResponse response = contaService.cadastrarContaCorrente(cpf, key, conta);
             return ResponseEntity.status(HttpStatus.CREATED).body(response);
         } else if (key.equals(TipoContaEnum.POUPANCA)) {
-            ContaResponse response = contaService.cadastrarContaPoupanca(cpf, key,conta);
+            ContaResponse response = contaService.cadastrarContaPoupanca(cpf, key, conta);
             return ResponseEntity.status(HttpStatus.CREATED).body(response);
         } else {
             // Parâmetro 'key' inválido
@@ -36,11 +36,15 @@ public class ContaController {
 
     }
 
-  //todo endpoint de detalhe
-    @GetMapping("/api/cliente/{cpf}/conta")
+    //todo endpoint de detalhe
+   //  @GetMapping("/api/conta")
 
+
+    //todo listar contas
+    @GetMapping("/api/cliente/{cpf}/conta")
     public List<ContaResponse> getContas(@PathVariable("cpf") String cpf) {
-        return contaService.listarConta(cpf);
+        List<ContaResponse> response = contaService.listarConta(cpf);
+        return response;
     }
 }
 

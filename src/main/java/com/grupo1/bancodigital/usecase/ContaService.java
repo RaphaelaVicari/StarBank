@@ -202,7 +202,7 @@ public class ContaService {
     }
 
     public List<ContaResponse> listarConta(String cpfCliente) {
-        List<ContaPoupancaEntity> contaPoupancaEncontrada = contaPoupancaRepository.procurarPorCpf(cpfCliente);
+        List<ContaPoupancaEntity> contaPoupancaEncontrada = contaPoupancaRepository.findAll();
         List<ContaCorrenteEntity> contaCorrenteEncontrada = contaCorrenteRepository.procurarPorCpf(cpfCliente);
 
         //todo implementar procurar por cpf contas correntes na conta corrente repository, que retorna uma lista de conta corrente entity

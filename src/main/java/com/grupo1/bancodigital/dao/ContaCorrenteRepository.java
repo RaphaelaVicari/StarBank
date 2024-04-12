@@ -10,16 +10,14 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface ContaCorrenteRepository extends JpaRepository<ContaCorrenteEntity,Long> {
+public interface ContaCorrenteRepository extends JpaRepository<ContaCorrenteEntity, Long> {
     @Query("select conta_corrente " +
             "from ContaCorrenteEntity conta_corrente " +
             "where conta_corrente.idContaCorrente = :idContaCorrente")
     ContaCorrenteEntity procurarPorId(@Param("idContaCorrente") Long idContaCorrente);
 
-    @Query("select conta_corrente " +
-            "from ContaCorrenteEntity conta_corrente " +
-            "inner join conta_corrente.conta conta " +
-            "inner join conta.cliente cliente " +
-            "where cliente.cpf = :cpf")
-    List<ContaCorrenteEntity> procurarPorCpf(@Param("cpf") String cpf);
+
+
+   @Query("select conta_corrente from ContaCorrenteEntity conta_corrente inner join conta_corrente.conta conta inner join conta.cliente cliente where cliente.cpf = :cpf")
+ List<ContaCorrenteEntity> procurarPorCpf(@Param("cpf") String cpf);
 }

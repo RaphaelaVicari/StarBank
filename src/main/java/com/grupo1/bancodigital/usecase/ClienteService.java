@@ -40,12 +40,12 @@ public class ClienteService {
                 .nomeCliente(clienteRequest.getNome())
                 .cpf(clienteRequest.getCpf())
                 .dataNascimento(clienteRequest.getDataNascimento())
-                .categoria(categoriaEntity)
+                .categoria(categoriaEntity.getIdCategoria())
                 .build();
 
         ClienteEntity clienteSalvo = clienteRepository.save(cliente);
 
-        return mapearCliente(CategoriaEnum.valueOf(clienteSalvo.getCategoria().getNomeCategoria()), clienteSalvo);
+        return mapearCliente(CategoriaEnum.valueOf(categoriaEntity.getNomeCategoria()), clienteSalvo);
     }
 
     private static ClienteResponse mapearCliente(CategoriaEnum categoria, ClienteEntity clienteSalvo) {
@@ -66,9 +66,9 @@ public class ClienteService {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Cliente não encontrado");
         }
 
-        return mapearCliente(CategoriaEnum.valueOf(clienteEncontrado
-                        .getCategoria()
-                        .getNomeCategoria()),
+        CategoriaEntity categoria = categoriaService.procurarCategoriaPorId(clienteEncontrado.getCategoria());
+
+        return mapearCliente(CategoriaEnum.valueOf(categoria.getNomeCategoria()),
                 clienteEncontrado);
     }
 
@@ -77,9 +77,10 @@ public class ClienteService {
         List<ClienteResponse> clienteResponse = new ArrayList<>();
 
         for(ClienteEntity i : clientesEncontrados) {
-            ClienteResponse clienteMapeado = mapearCliente(CategoriaEnum.valueOf(i
-                    .getCategoria()
-                    .getNomeCategoria()), i);
+
+            CategoriaEntity categoria = categoriaService.procurarCategoriaPorId(i.getCategoria());
+
+            ClienteResponse clienteMapeado = mapearCliente(CategoriaEnum.valueOf(categoria.getNomeCategoria()), i);
             clienteResponse.add(clienteMapeado);
         }
 
@@ -103,11 +104,11 @@ public class ClienteService {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Categoria Inválida");
         }
 
-        clienteExistente.setCategoria(categoriaEntity);
+        clienteExistente.setCategoria(categoriaEntity.getIdCategoria());
 
         ClienteEntity clienteAtualizado = clienteRepository.save(clienteExistente);
 
-        return mapearCliente(CategoriaEnum.valueOf(clienteAtualizado.getCategoria().getNomeCategoria()), clienteAtualizado);
+        return mapearCliente(CategoriaEnum.valueOf(categoriaEntity.getNomeCategoria()), clienteAtualizado);
     }
 
 }

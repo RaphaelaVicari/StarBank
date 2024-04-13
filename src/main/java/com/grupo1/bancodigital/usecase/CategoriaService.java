@@ -16,4 +16,9 @@ public class CategoriaService {
         return categoriaRepository.findByNomeCategoria(e.name());
     }
 
+    public CategoriaEntity procurarCategoriaPorId(Integer id) {
+        return categoriaRepository.findById(id);
+    }
+
+
 }

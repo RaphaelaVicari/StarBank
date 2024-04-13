@@ -7,7 +7,5 @@ import lombok.Getter;
 @Getter
 public enum CartaoEnum {
     CREDITO,
-
     DEBITO;
-
 }

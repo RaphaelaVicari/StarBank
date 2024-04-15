@@ -106,7 +106,7 @@ public class ClienteService {
 
         clienteExistente.setCategoria(categoriaEntity.getIdCategoria());
 
-        ClienteEntity clienteAtualizado = clienteRepository.save(clienteExistente);
+        ClienteEntity clienteAtualizado = clienteRepository.update(clienteExistente);
 
         return mapearCliente(CategoriaEnum.valueOf(categoriaEntity.getNomeCategoria()), clienteAtualizado);
     }

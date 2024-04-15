@@ -15,7 +15,7 @@ public class CategoriaRepository {
     //    @Query("select p from CategoriaEntity p where p.nomeCategoria = :nomeCategoria")
     public CategoriaEntity findById(Integer idCategoria) {
         String sql = "select * from categoria where idcategoria = ?";
-        return jdbcTemplate.queryForObject(sql, new BeanPropertyRowMapper<>(), idCategoria);
+        return jdbcTemplate.queryForObject(sql, (rs, rowNum) -> new CategoriaEntity(rs.getInt("idcategoria"), rs.getString("nomecategoria")), idCategoria);
     }
 
     public CategoriaEntity findByNomeCategoria(String nomeCategoria) {

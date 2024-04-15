@@ -17,8 +17,8 @@ public class ClienteRepository {
 
     //    @Query("select cliente from ClienteEntity cliente where cliente.cpf = :cpf")
     public ClienteEntity procurarPorCpf(String cpf) {
-        String sql = "SELECT * FROM clientes WHERE cpf = ?";
-        return jdbcTemplate.queryForObject(sql, new BeanPropertyRowMapper<>(), cpf);
+        String sql = "SELECT * FROM cliente WHERE cpf = ?";
+        return jdbcTemplate.queryForObject(sql, new BeanPropertyRowMapper<ClienteEntity>(ClienteEntity.class), cpf);
     }
 
     public ClienteEntity save(ClienteEntity cliente) {
@@ -27,14 +27,21 @@ public class ClienteRepository {
         return cliente;
     }
 
+    public ClienteEntity update(ClienteEntity cliente) {
+        String sql = "UPDATE cliente set nomeCliente = ?, dataNascimento =?, categoria=? where cpf = ?";
+        jdbcTemplate.update(sql, cliente.getNomeCliente(), cliente.getDataNascimento(), cliente.getCategoria(), cliente.getCpf());
+        return cliente;
+    }
+
     public List<ClienteEntity> findAll() {
-        String query = "select * from cliente";
-        return jdbcTemplate.query(query, (rs, row) -> ClienteEntity.builder()
-                .nomeCliente(rs.getString("nomeCliente"))
-                .dataNascimento(LocalDate.now())
-                .categoria(rs.getInt("categoria"))
-                .cpf("cpf")
-                .build()
-        );
+        String sql = "select * from cliente";
+        List<ClienteEntity> query = jdbcTemplate.query(sql, new BeanPropertyRowMapper<ClienteEntity>(ClienteEntity.class));
+        return query;
+//        return jdbcTemplate.query(query, (rs, row) -> new ClienteEntity(
+//                rs.getString("cpf"),
+//                rs.getString("nomeCliente"),
+//                LocalDate.now(),
+//                rs.getInt("categoria"))
+//        );
     }
 }

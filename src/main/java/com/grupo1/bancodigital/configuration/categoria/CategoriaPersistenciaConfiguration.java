@@ -1,4 +1,4 @@
-package com.grupo1.bancodigital.configuration.categoria;
+/*package com.grupo1.bancodigital.configuration.categoria;
 
 import com.grupo1.bancodigital.dto.CategoriaEnum;
 import com.grupo1.bancodigital.model.cliente.CategoriaEntity;
@@ -32,4 +32,4 @@ public class CategoriaPersistenciaConfiguration {
         repository.save(e3);
     }
 
-}
+}*/
